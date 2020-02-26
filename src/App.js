@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
 
 const client = new ApolloClient({
@@ -13,15 +13,27 @@ const client = new ApolloClient({
 
 const EXCHANGE_BOOKS = gql`
   {
-    book(author: "hisasann") {
+    books {
       title
       author
     }
   }
 `;
 
+const ADD_BOOK = gql`
+  mutation AddBook($title: String!, $author: String!) {
+    addBook(title: $title, author: $author) {
+      title
+      author
+    }
+  }
+`;
+
+let booksRefetch;
 function ExchangeBooks() {
-  const { loading, error, data } = useQuery(EXCHANGE_BOOKS);
+  const { loading, error, data, refetch } = useQuery(EXCHANGE_BOOKS, {
+  });
+  booksRefetch = refetch;
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -48,11 +60,46 @@ function ExchangeBooks() {
   ));
 }
 
+function AddBook() {
+  let title, author;
+  const [addBook, { data }] = useMutation(ADD_BOOK);
+
+  return (
+    <div>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          addBook({ variables: { title: title.value, author: author.value } });
+          title.value = '';
+          author.value = '';
+          booksRefetch();
+        }}
+      >
+        <p>
+          title: <input
+            ref={node => {
+              title = node;
+            }}
+          />
+        </p>
+        <p>
+          author: <input
+            ref={node => {
+              author = node;
+            }}
+          />
+        </p>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+  );
+}
+
 client
   .query({
     query: gql`
       {
-        book(author: "hisasann") {
+        books {
           title
           author
         }
@@ -67,9 +114,11 @@ const App = () => {
       <div className="App">
         <h2>My first Apollo app <span role="img" aria-label="rocket"> 🚀</span></h2>
         <ExchangeBooks />
+        <AddBook />
       </div>
     </ApolloProvider>
   );
 };
 
 export default App;
+
