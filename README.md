@@ -6,6 +6,14 @@
 
 [Get started - Client (React) - Apollo GraphQL Docs](https://www.apollographql.com/docs/react/get-started/)
 
+## Polling
+
+[Queries - Client (React) - Apollo GraphQL Docs](https://www.apollographql.com/docs/react/data/queries/#polling)
+
+## Refetching
+
+[Queries - Client (React) - Apollo GraphQL Docs](https://www.apollographql.com/docs/react/data/queries/#refetching)
+
 # This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
