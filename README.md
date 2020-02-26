@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🚀 react-with-graphql using apollo-client
+
+[apollographql/apollo-client: A fully-featured, production ready caching GraphQL client for every UI framework and GraphQL server](https://github.com/apollographql/apollo-client)
+
+## Getting started
+
+[Get started - Client (React) - Apollo GraphQL Docs](https://www.apollographql.com/docs/react/get-started/)
+
+# This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
