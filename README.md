@@ -26,6 +26,14 @@
 
 [Reducing our Redux code with React Apollo - Apollo GraphQL](https://blog.apollographql.com/reducing-our-redux-code-with-react-apollo-5091b9de9c2a)
 
+## 🍟 Author
+
+- [github/hisasann](https://github.com/hisasann)
+- [twitter/hisasann](https://twitter.com/hisasann)
+
+## 🥫 License
+
+MIT © [hisasann (Yoshiyuki Hisamatsu)](https://github.com/hisasann)
 
 # This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
